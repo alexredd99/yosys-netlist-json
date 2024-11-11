@@ -1,5 +1,5 @@
 use serde_derive::{Deserialize, Serialize};
-use std::collections::HashMap;
+use std::collections::{HashMap, BTreeMap};
 use std::io::{Read, Write};
 
 /// Legal values for the direction of a port on a module
@@ -146,7 +146,7 @@ pub struct Netlist {
     pub creator: String,
     /// A map from module names to module objects contained in this .json file
     #[serde(default)]
-    pub modules: HashMap<String, Module>,
+    pub modules: BTreeMap<String, Module>,
 }
 
 /// Represents one module in the Yosys hierarchy
@@ -160,16 +160,16 @@ pub struct Module {
     pub parameter_default_values: HashMap<String, AttributeVal>,
     /// Module ports (interfaces to other modules)
     #[serde(default)]
-    pub ports: HashMap<String, Port>,
+    pub ports: BTreeMap<String, Port>,
     /// Module cells (objects inside this module)
     #[serde(default)]
-    pub cells: HashMap<String, Cell>,
+    pub cells: BTreeMap<String, Cell>,
     /// Module memories
     #[serde(default)]
-    pub memories: HashMap<String, Memory>,
+    pub memories: BTreeMap<String, Memory>,
     /// Module netnames (names of wires in this module)
     #[serde(default)]
-    pub netnames: HashMap<String, Netname>,
+    pub netnames: BTreeMap<String, Netname>,
 }
 
 /// Represents a port on a module
@@ -207,9 +207,9 @@ pub struct Cell {
     pub attributes: HashMap<String, AttributeVal>,
     /// The direction of the ports on this cell
     #[serde(default)]
-    pub port_directions: HashMap<String, PortDirection>,
+    pub port_directions: BTreeMap<String, PortDirection>,
     /// Bit value(s) representing the wire(s) connected to the inputs/outputs of this cell
-    pub connections: HashMap<String, Vec<BitVal>>,
+    pub connections: BTreeMap<String, Vec<BitVal>>,
 }
 
 /// Represents a memory in a module
@@ -257,7 +257,7 @@ impl Netlist {
     pub fn new(creator: &str) -> Self {
         Self {
             creator: creator.to_owned(),
-            modules: HashMap::new(),
+            modules: BTreeMap::new(),
         }
     }
 
