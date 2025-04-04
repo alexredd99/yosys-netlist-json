@@ -191,7 +191,7 @@ pub struct Port {
 }
 
 /// Represents a cell in a module
-#[derive(Clone, Serialize, Deserialize, Debug, Eq, PartialEq)]
+#[derive(Clone, Serialize, Deserialize, Debug, Eq, PartialEq, Default)]
 pub struct Cell {
     /// Indicates an internal/auto-generated name that starts with `$`
     #[serde(default)]
