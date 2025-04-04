@@ -231,7 +231,7 @@ pub struct Memory {
 }
 
 /// Represents the name of a net in a module
-#[derive(Clone, Serialize, Deserialize, Debug, Eq, PartialEq)]
+#[derive(Clone, Serialize, Deserialize, Debug, Eq, PartialEq, Default)]
 pub struct Netname {
     /// Indicates an internal/auto-generated name that starts with `$`
     #[serde(default)]
