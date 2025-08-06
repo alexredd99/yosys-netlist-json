@@ -181,7 +181,7 @@ pub struct Port {
     pub bits: Vec<BitVal>,
     /// Bit offset for mapping to HDL bit numbering
     #[serde(default)]
-    pub offset: usize,
+    pub offset: i64,
     /// Whether or not HDL bit numbering is MSB-first
     #[serde(default)]
     pub upto: usize,
@@ -240,7 +240,7 @@ pub struct Netname {
     pub bits: Vec<BitVal>,
     /// Bit offset for mapping to HDL bit numbering
     #[serde(default)]
-    pub offset: usize,
+    pub offset: i64,
     /// Whether or not HDL bit numbering is MSB-first
     #[serde(default)]
     pub upto: usize,
